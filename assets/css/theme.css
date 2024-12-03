@@ -1,0 +1,25 @@
+:root {
+    --link-color: #000000; /* Цвет ссылок в светлой теме */
+    --text-color: #000000; /* Основной цвет текста в светлой теме */
+    background-color: #ffffff;
+  }
+  
+  .dark-mode {
+    --link-color: #ffffff; /* Цвет ссылок в тёмной теме */
+    --text-color: #ffffff; /* Основной цвет текста в тёмной теме */
+    background-color: #01263f;
+  }
+  
+  body, .dark-mode {
+    color: var(--text-color); /* Использование переменной для цвета текста */
+  }
+  
+  /* Стили для ссылок */
+  a {
+    color: var(--link-color); /* Цвет ссылок будет зависеть от темы */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }

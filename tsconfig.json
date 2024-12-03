@@ -1,0 +1,21 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "types": ["@nuxt/types", "@pinia/nuxt"]
+  },
+  "include": [
+    "nuxt.config.ts",
+    "components/**/*.vue",
+    "pages/**/*.vue",
+    "stores/**/*.ts",
+    "plugins/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}
+
