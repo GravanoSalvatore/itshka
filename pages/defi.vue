@@ -3,7 +3,7 @@
   
     <div class="row">
       <!-- Левая колонка для новостей -->
-       <h2 v-if="isLoading" class="text-center  fw-bold">DEFI</h2>
+       <h2 style="" v-if="isLoading" class="text-center  fw-bold">DEFI</h2>
       <div class="col-12 col-md-3 fixed-sidebar mb-4 mb-md-0">
         <div class="sidebar-content">
           <div v-for="newsItem in latestNews" :key="newsItem.id" class="sidebar-news-item">

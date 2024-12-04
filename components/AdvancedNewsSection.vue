@@ -4,7 +4,7 @@
        
         <div class="col-12 col-lg-6">
           <!-- Большая карточка -->
-          <div class="card mb-4 large-card position-relative mx-auto">
+          <div style="border: none !important;" class="card mb-4 large-card position-relative mx-auto">
             <img
               v-if="largeNewsItem.urlToImage"
               :src="largeNewsItem.urlToImage"
@@ -16,7 +16,11 @@
                 <a :href="largeNewsItem.url" target="_blank" class="text-white">
                   {{ largeNewsItem.title }}
                 </a>
+                <p class="card-text ">
+                    {{ formatDate(largeNewsItem.publishedAt) }}
+                  </p>
               </h5>
+              
               <!-- <p class="card-text text-white small-text">
                 {{ formatDate(largeNewsItem.publishedAt) }}
               </p> -->
@@ -24,34 +28,33 @@
           </div>
   
           <!-- Карточки под большой карточкой -->
-          <div
-         
-         
-            v-for="newsItem in sideNews"
-            :key="newsItem.id"
-            class="car p-3 mb-3 side-card flex-row align-items-center mx-auto"
-          >
-            <div  class="card-body" >
-              <p  class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg> 
-{{ newsItem.author }}
-</p>
-              <a :href="newsItem.url" target="_blank" class="mt-auto fw-bold">{{ newsItem.title }}</a>
+          <h5 style="background-color: rgb(65, 116, 212);border-radius: 4px;" class=" text-white p-2 fw-bold">Выбор редакции</h5>  
+        <div  
+          v-for="(newsItem, index) in sideNews"  
+          :key="newsItem.id"  
+          class="car p-3 mb-3 side-card flex-row align-items-center mx-auto"  
+        >  
+          <div class="card-body">  
+            <span style="font-size: 31px;color: cornflowerblue;" class="fw-bold">{{ index + 1 }}</span> 
+            <p style="font-size: 11px;" class="card-text">  
+              {{ formatDate(newsItem.publishedAt) }}  
+            </p>  
+            
+             <a :href="newsItem.url" target="_blank" class="mt-auto fw-bold fs-5">{{ newsItem.title }}</a>  
+             <p style="color: cornflowerblue" class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">  
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>  
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>  
+            </svg> {{ newsItem.author }}</p>  
+          </div>  
+          <img  
+            v-if="newsItem.urlToImage"  
+            :src="newsItem.urlToImage"  
+            class="img-fluid side-card-img"  
+            alt="news image"  
+          />  
+        </div>  
+      </div>  
 
-              <p class="card-text ">
-                {{ formatDate(newsItem.publishedAt) }}
-              </p>
-            </div>
-            <img
-              v-if="newsItem.urlToImage"
-              :src="newsItem.urlToImage"
-              class="img-fluid side-card-img"
-              alt="news image"
-            />
-          </div>
-        </div>
   
         <!-- Правая колонка с сеткой маленьких карточек -->
         <div class="col-12 col-lg-6">
@@ -59,25 +62,28 @@
             <div
               v-for="newsItem in smallNews"
               :key="newsItem.id"
-              class="col-6 mb-4"
+              class="col-4 "
             >
-              <div class="car h-100 small-card" style="">
+              <div class="car h-100 small-card " style="">
                 <img
                   v-if="newsItem.urlToImage"
                   :src="newsItem.urlToImage"
                   class="card-img-top small-card-img"
                   alt="news image"
                 />
-                <div class="card-body">
-                  <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <div class="card-body  p-3">
+               <span style="font-size: 11px;">  {{ formatDate(newsItem.publishedAt) }}</span> 
+                  <p  class="card-text ">
+                    <a style="font-size: 14px;" :href="newsItem.url" target="_blank" class="mt-auto fw-bold ">{{ newsItem.title }}</a>
+                  </p>
+                 
+                  <p style="color: cornflowerblue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
   <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg> {{ newsItem.author }}</p>
-                  <a :href="newsItem.url" target="_blank" class="mt-auto fw-bold">{{ newsItem.title }}</a>
-
-                  <p class="card-text ">
-                    {{ formatDate(newsItem.publishedAt) }}
-                  </p>
+</svg> {{ newsItem.author }}
+                 
+                </p>
+                 
                 </div>
               </div>
             </div>
@@ -117,9 +123,9 @@
           const data = await response.json();
           
           // Заполняем массивы для отображения
-          this.smallNews = data.items.slice(0, 8);
-          this.largeNewsItem = data.items[4];
-          this.sideNews = data.items.slice(9, 12);
+          this.smallNews = data.items.slice(1, 16);
+          this.largeNewsItem = data.items[0];
+          this.sideNews = data.items.slice(16, 21);
           this.loading = false;
         } catch (error) {
           console.error("Ошибка при загрузке новостей:", error);
@@ -130,16 +136,20 @@
   </script>
   
   <style scoped>
+  p{
+    font-size: 11px;
+  }
   .large-card .card-img-overlay {  
+    
   background-color: rgba(0, 0, 0, 0.2); /* Регулируйте значение альфа-канала (0.5) для желаемой степени затемнения */  
 }  
   
   
-  .small-card:hover {
+  /* .small-card:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
     transform: scale(1.05);
-  }
+  } */
   
   .small-card-img {
     height: 150px;

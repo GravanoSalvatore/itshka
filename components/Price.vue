@@ -1,5 +1,5 @@
 <template>
-    <div class="containe mt-3">
+    <div class="containe ">
       <div class="marquee mb-2">
         <div class="marquee-content">
           <div class="crypto-items">

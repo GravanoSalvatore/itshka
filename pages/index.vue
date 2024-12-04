@@ -4,10 +4,12 @@
     <CookieConsent/>
         <AdvancedNewsSection />
         <Price/>
+        <News3 />
+        <br/>
       <NewsSection />
       <br/>
       
-      <News3 />
+    
       <News2 />
       <Popular/>
       <News4 />

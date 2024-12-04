@@ -18,7 +18,13 @@
         <div class="row g-4">
           <div v-for="newsItem in newsItems" :key="newsItem.id" class="col-12 col-md-6 col-lg-4 news-card">
             <div class="car p-3 h-100 ">
-              <img v-if="newsItem.urlToImage" :src="newsItem.urlToImage" class="card-img-top" alt="news image" />
+              <!-- <img v-if="newsItem.urlToImage" :src="newsItem.urlToImage" class="card-img-top" alt="news image" /> -->
+              <img
+                :src="newsItem.urlToImage"
+                class="card-img-top"
+                alt="news image"
+                @error="handleImageError"
+              />
               <div class="card-body d-flex flex-column">
                 <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -40,6 +46,14 @@
   export default {
     data() {
       return {
+        fallbackImages: [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqh-XpWAkI5y-Tp8KoDkTDlmNZ0pwQK_epGw&s",
+        "https://ipcisco.com/wp-content/uploads/2020/12/Internet-Access-Technologies-ipcisco-835x500.jpg",
+        "https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHUBsrWYrmSd1PJhHDI-Q9ku0-TWG0BgPfbw&s",
+      ],
+      fallbackIndex: 0,
+    
         newsItems: [],
         bannerItem: null,
       };
@@ -49,6 +63,11 @@
       this.setupScrollAnimation();
     },
     methods: {
+      handleImageError(event) {
+      // Устанавливаем следующее изображение по кругу
+      this.fallbackIndex = (this.fallbackIndex + 1) % this.fallbackImages.length;
+      event.target.src = this.fallbackImages[this.fallbackIndex];
+    },
       formatDate(dateString) {
         const date = new Date(dateString);
         return date.toLocaleDateString("ru-RU", {

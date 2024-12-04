@@ -232,7 +232,7 @@
         <div class="col-12 col-md-3 fixed-sidebar mb-4 mb-md-0">
           <input
           v-if="!isLoading"
-          style="box-shadow: none !important;"
+          style="border:none !important;box-shadow: none !important;background-color: transparent !important;color: cornflowerblue;"
             type="text"
             v-model="searchQuery"
             placeholder="Поиск криптовалюты"
@@ -276,7 +276,7 @@
         <div class="col-12 col-md-9" ref="newsContainer">
           <div class="row">
             <div v-for="newsItem in paginatedNews" :key="newsItem.id" class="col-12 col-md-12 col-lg-4 mb-4">
-              <div class="car h-100 news-card" style="max-height: 500px;">
+              <div class="car p-3 h-100 news-card" style="max-height: 500px;">
                 <img
                   v-if="newsItem.urlToImage"
                   :src="newsItem.urlToImage"
@@ -403,6 +403,9 @@
   </script>
   
   <style scoped>
+  ::placeholder{
+    color: cornflowerblue;
+  }
   .pointer {
     cursor: pointer;
   }

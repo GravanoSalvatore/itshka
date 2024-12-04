@@ -2,7 +2,7 @@
      
     <div class="marquee">
        
-      <div class="marquee-content fw-bold mt-1">
+      <div style="color: cornflowerblue;" class="marquee-content fw-bold mt-1">
         <span v-for="(newsItem, index) in latestNews" :key="'1-' + index">
             <img
                 style="width: 20px; height: 20px"

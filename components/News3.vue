@@ -62,6 +62,9 @@ export default {
   >
     <div class="banner-content">
       <h1 class="banner-title">{{ bannerData.title }}</h1>
+      <p class="card-text ">
+                    {{ formatDate(bannerData.publishedAt) }}
+                  </p>
     </div>
   </div>
 </template>
@@ -78,6 +81,14 @@ export default {
     await this.fetchBannerData();
   },
   methods: {
+    formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString("ru-RU", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      },
     async fetchBannerData() {
       try {
         const response = await fetch(

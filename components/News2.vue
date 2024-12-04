@@ -158,7 +158,7 @@ export default {
     <div class="row gx-3 gy-4">
       <!-- Левая крупная карточка -->
       <div class="col-12 col-lg-8">
-        <div class="card  featured-card text-white">
+        <div style="position: relative;" class="car featured-card text-white">
           <img v-if="largeNewsItem.urlToImage" :src="largeNewsItem.urlToImage" class="card-img" alt="news image" />
           <div class="card-img-overlay d-flex flex-column justify-content-end p-4 overlay-dark">
             <NuxtLink :to="`/news/${largeNewsItem.id}`" class="text-decoration-none text-white">
@@ -190,7 +190,7 @@ export default {
       <div class="col-12">
         <div class="row row-cols-2 row-cols-md-3 g-3">
           <div v-for="newsItem in smallNews" :key="newsItem.id" class="col">
-            <div class="car  small-card shadow-sm">
+            <div style="" class="car  small-card shadow-sm">
               <div
                 v-if="newsItem.urlToImage"
                 :style="{ backgroundImage: `url(${newsItem.urlToImage})` }"
@@ -289,14 +289,14 @@ a{
 /* Маленькие карточки для smallNews */
 .small-card {
   height: 100%;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 .small-card-img {
   background-size: cover;
   background-position: center;
   height: 100%;
   color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  /* text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); */
   position: relative;
 }
 .small-card-img::before {
@@ -307,7 +307,7 @@ a{
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.7); /* Более тёмное затемнение */
-  border-radius: 8px;
+  /* border-radius: 8px; */
   z-index: 1;
 }
 .small-card-img a, .small-card-img h6 {

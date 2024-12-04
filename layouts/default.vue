@@ -19,7 +19,7 @@
                 /* color: aliceblue; */
               "
             >
-              <!-- <img style="width: 35px;" src="https://cdn3d.iconscout.com/3d/premium/thumb/blockchain-node-3d-icon-download-in-png-blend-fbx-gltf-file-formats--bitcoin-logo-crypto-network-pack-science-technology-icons-7874339.png?f=webp"> -->
+              <!-- <img style="width: 55px;" src="../public/logo.webp"> -->
               <img class="brand" style="" src="../public/crypto.png" /></div
           ></NuxtLink>
 
@@ -362,7 +362,7 @@
                   class="form-control"
                   placeholder="Ваш Email"
                 />
-                <button class="btn btn-primary mt-2 w-100">Подписаться</button>
+                <button class="btn-danger1 mt-2 w-100">Подписаться</button>
               </form>
             </div>
           </div>
@@ -570,7 +570,7 @@ export default {
   
   <style scoped>
 .dark-mode {
-  background-color: #091520; /* или другой цвет для темной темы */
+  background-color: #01263f; /* или другой цвет для темной темы */
   color: white; /* для текста */
 }
 :root {

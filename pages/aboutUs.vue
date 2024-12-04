@@ -27,20 +27,20 @@
   
   <style scoped>
   .about-us {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   }
   
   h1 {
-    color: #333;
+    /* color: #333; */
     margin-bottom: 20px;
   }
   
   p {
     line-height: 1.8;
-    color: #555;
+    /* color: #555; */
   }
   
   strong {

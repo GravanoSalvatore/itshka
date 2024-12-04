@@ -4,7 +4,9 @@
     <div class="row">
       <!-- Левая колонка для новостей -->
       <div class="col-12 col-md-3 fixed-sidebar mb-4 mb-md-0">
-        <h3 v-if="!isLoading" class="text-center my-2 fw-bold">АйТи Гид</h3>
+        <h5   v-if="!isLoading" style="background-color: cornflowerblue;border-radius: 4px;" class=" text-white p-2 fw-bold">Новости альткоинов</h5>  
+       
+        <!-- <h3 v-if="!isLoading" class="text-center my-2 fw-bold">АйТи Гид</h3> -->
         <div class="sidebar-content">
           <div
             v-for="newsItem in latestNews"
@@ -197,7 +199,10 @@ a {
   text-decoration: none;
   /* color: black; */
 }
-
+.sidebar-content{
+  max-height: 100vh;
+  overflow-y: auto;
+}
 .fixed-sidebar {
   max-height: 100vh;
   overflow-y: auto;
