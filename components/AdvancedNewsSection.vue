@@ -58,36 +58,35 @@
   
         <!-- Правая колонка с сеткой маленьких карточек -->
         <div class="col-12 col-lg-6">
-          <div class="row">
-            <div
-              v-for="newsItem in smallNews"
-              :key="newsItem.id"
-              class="col-4 "
-            >
-              <div class="car h-100 small-card " style="">
-                <img
-                  v-if="newsItem.urlToImage"
-                  :src="newsItem.urlToImage"
-                  class="card-img-top small-card-img"
-                  alt="news image"
-                />
-                <div class="card-body  p-3">
-               <span style="font-size: 11px;">  {{ formatDate(newsItem.publishedAt) }}</span> 
-                  <p  class="card-text ">
-                    <a style="font-size: 14px;" :href="newsItem.url" target="_blank" class="mt-auto fw-bold ">{{ newsItem.title }}</a>
-                  </p>
-                 
-                  <p style="color: cornflowerblue"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-</svg> {{ newsItem.author }}
-                 
-                </p>
-                 
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="row">  
+  <div  
+    v-for="newsItem in smallNews"  
+    :key="newsItem.id"  
+    class="col-12 col-md-6 col-lg-4"  
+  >  
+    <div class="car h-100 small-card">  
+      <img  
+        v-if="newsItem.urlToImage"  
+        :src="newsItem.urlToImage"  
+        class="card-img-top small-card-img"  
+        alt="news image"  
+      />  
+      <div class="card-body p-3">  
+        <span class="d-block mb-2" style="font-size: 11px;">{{ formatDate(newsItem.publishedAt) }}</span>  
+        <p class="card-text">  
+          <a :href="newsItem.url" target="_blank" class="mt-auto fw-bold" style="font-size: 14px;">{{ newsItem.title }}</a>  
+        </p>  
+        <p style="color: cornflowerblue">  
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">  
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />  
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />  
+          </svg>  
+          {{ newsItem.author }}  
+        </p>  
+      </div>  
+    </div>  
+  </div>  
+</div>
         </div>
       </div>
     </div>

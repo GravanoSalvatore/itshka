@@ -1,9 +1,15 @@
 <template>
   <div :class="{ 'dark-mode': isDarkMode }" class="container-fluid ">
-  
-    <div class="row">
+    <!-- Loading Spinner -->
+    <div v-if="isLoading" class="d-flex justify-content-center align-items-center spinner-overlay">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Загрузка...</span>
+      </div>
+    </div>
+
+    <div v-else class="row">
       <!-- Левая колонка для новостей -->
-       <h2 v-if="isLoading" class="text-center  fw-bold">Альткоины</h2>
+      <h2 class="text-center fw-bold">Альткоины</h2>
       <div class="col-12 col-md-3 fixed-sidebar mb-4 mb-md-0">
         <div class="sidebar-content">
           <div v-for="newsItem in latestNews" :key="newsItem.id" class="sidebar-news-item">
@@ -59,7 +65,7 @@
         </div>
 
         <!-- Пагинация -->
-        <div v-if="!isLoading1" class="d-flex justify-content-center my-2">
+        <div class="d-flex justify-content-center my-2">
           <span
             class="pointer mx-2"
             :disabled="currentPage === 1"
@@ -84,13 +90,11 @@
 export default {
   data() {
     return {
-      isLoading:false,
-      isLoading1:true,
+      isLoading: true,
       news: [],
       latestNews: [],
       currentPage: 1,
       pageSize: 15,
-     
     };
   },
   computed: {
@@ -104,35 +108,31 @@ export default {
     },
   },
   async mounted() {
-    await this.fetchNews();
-    await this.fetchLatestNews();
-    this.isLoading1 = false;
-   
+    try {
+      await Promise.all([
+        this.fetchNews(),
+        this.fetchLatestNews()
+      ]);
+      this.isLoading = false;
+    } catch (error) {
+      console.error("Ошибка при загрузке данных:", error);
+      this.isLoading = false;
+    }
   },
   methods: {
     async fetchNews() {
-      try {
-        const response = await fetch(
-          "https://4v-news-api.azurewebsites.net/News?SiteId=1&LanguageCode=ru&CategoryId=16&Page=1&PageSize=100"
-        );
-        const data = await response.json();
-        this.news = data.items;
-         this.isLoading = true;
-      } catch (error) {
-        console.error("Ошибка при загрузке новостей:", error);
-      }
+      const response = await fetch(
+        "https://4v-news-api.azurewebsites.net/News?SiteId=1&LanguageCode=ru&CategoryId=16&Page=1&PageSize=100"
+      );
+      const data = await response.json();
+      this.news = data.items;
     },
     async fetchLatestNews() {
-      try {
-        const response = await fetch(
-          "https://4v-news-api.azurewebsites.net/News?SiteId=1&LanguageCode=ru&CategoryId=19&Page=1&PageSize=42"
-        );
-        const data = await response.json();
-        this.latestNews = data.items;
-         this.isLoading = true;
-      } catch (error) {
-        console.error("Ошибка при загрузке последних новостей:", error);
-      }
+      const response = await fetch(
+        "https://4v-news-api.azurewebsites.net/News?SiteId=1&LanguageCode=ru&CategoryId=19&Page=1&PageSize=42"
+      );
+      const data = await response.json();
+      this.latestNews = data.items;
     },
     formatDate(dateString) {
       const date = new Date(dateString);
@@ -165,6 +165,24 @@ export default {
 </script>
 
 <style scoped>
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #01263f;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -183,7 +201,6 @@ a {
 .sidebar-news-item {
   margin-bottom: 10px;
   padding: 10px;
-  /* background-color: #f8f9fa; */
   border-radius: 5px;
 }
 
@@ -216,7 +233,6 @@ a {
 
 .card-text {
   font-size: 0.9rem;
-  /* color: #6c757d; */
 }
 
 @media (max-width: 767px) {
