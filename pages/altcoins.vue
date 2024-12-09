@@ -33,6 +33,7 @@
 
       <!-- Основная колонка с карточками новостей -->
       <div class="col-12 col-md-9" ref="newsContainer">
+        <Popular/>
         <div class="row">
           <div
             v-for="newsItem in paginatedNews"
@@ -87,8 +88,10 @@
 </template>
 
 <script>
+import Popular from '../components/Popular.vue'
 export default {
-  data() {
+  components: {Popular}
+,  data() {
     return {
       isLoading: true,
       news: [],

@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'dark-mode': isDarkMode }" class="crypto-news">
-    <h4 class="text-center">Новости альткоинов от зарубежных коллег</h4>
+    <!-- <h4 class="text-center">Новости альткоинов от зарубежных коллег</h4> -->
 
     <!-- Горизонтальный список кнопок -->
     <div class="crypto-buttons">

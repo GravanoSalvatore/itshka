@@ -11,7 +11,7 @@
       
     
       <News2 />
-      <Popular/>
+      <!-- <Popular/> -->
       <News4 />
       <br/>
       <News5 />
